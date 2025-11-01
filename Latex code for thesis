@@ -1,0 +1,1550 @@
+%--------------------
+% Packages
+% -------------------
+
+
+% !TeX TXS-program:compile = pdflatex -shell-escape -interaction=nonstopmode %.tex
+
+% === PAGE LAYOUT ===
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper, lmargin=0.1666\paperwidth, rmargin=0.1666\paperwidth, tmargin=0.1111\paperheight, bmargin=0.1111\paperheight]{geometry} %
+
+
+
+
+
+% === IMAGE HANDLING ===
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{ {figures/} }
+\usepackage{floatrow}
+\usepackage{newtxtext}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{placeins} 
+
+%\captionsetup[sub]{labelfont=bf, font=rm, labelsep=period, position=bottom} % Times-like + label at bottom
+
+% === SECTION TITLES ===
+\usepackage{titlesec} % Cunstomize chapters and sections
+\usepackage{titling} % Allows customizing the title block
+
+
+% === TABLE ===
+\usepackage{booktabs}
+
+% === TEXT FORMATTING ===
+\usepackage{setspace} % Control line spacing (can enable double spacing if needed)
+\usepackage{parskip}  % Adds spacing between paragraphs (no indentation)
+
+% === FONT SETTINGS ===
+\usepackage{fontspec} % Required for using system fonts (XeLaTeX or LuaLaTeX only)
+\usepackage{dirtytalk}
+
+% === HEADER / FOOTER CONTROL ===
+\usepackage{fancyhdr} % Allows custom headers/footers (not used here but useful)
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{} % Clear default header/footer
+\fancyfoot[R]{\thepage} % Centered page number in footer
+\fancyhead[L]{\textit{\large  \thesection\ \leftmark}} % Chapter name on left
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % Update \leftmark with section title
+
+
+% === REFERENCE ===
+\usepackage[
+backend=biber,
+style=numeric,
+sorting = none,
+date = short
+]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{ref.bib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{linkcolor}{rgb}{.8,0,0}
+\definecolor{urlcolor}{rgb}{0,0,.7}
+\definecolor{citecolor}{rgb}{0,.5,0}
+\definecolor{acrocolor}{rgb}{0,0,.7}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    citecolor=citecolor,
+    urlcolor=urlcolor
+    }
+
+% === SET MAIN FONT ===
+
+\usepackage{minted}
+\usemintedstyle{friendly} % or 'monokai', 'tango', etc.
+
+% === ACADEMIC PACKAGE ===
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[normalfont]{mathdesign}
+\usepackage[OMLmathrm,OMLmathbf]{isomath} % options define which alphabets will be loaded, i.e. if bold face font is not necessary, `OMLmathbf` can be ommitted.
+
+
+\usepackage{upgreek}
+\usepackage{enumitem}
+
+\renewcommand{\floatpagefraction}{0.6} %default: 0.6
+\usepackage{xeCJK}
+
+
+
+
+
+
+
+
+
+\begin{document} %All text i dokumentet hamnar mellan dessa taggar, allt ovanför är formatering av dokumentet
+
+\abovedisplayskip=-0.3cm
+\abovedisplayshortskip=-0.3cm
+\belowdisplayskip=0.3cm
+\belowdisplayshortskip=0.4cm
+
+
+
+\begin{titlepage}
+
+\vspace*{-2cm}
+
+% === BOTTOM: UvA and VU Logos ===
+
+\begin{center} 
+    \begin{minipage}{0.2\linewidth}
+        \includegraphics[width=\linewidth]{figure/logo and miscellaneous/UvA_logo.jpg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.2\linewidth}
+        \includegraphics[width=\linewidth]{figure/logo and miscellaneous/Nikhef BW.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.2\linewidth}
+        \flushright
+        \includegraphics[width=\linewidth]{figure/logo and miscellaneous/VU logo BW.png}
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+
+% === CENTRAL ARTWORK IMAGE ===
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{figure/Front_dismount.jpg} % Artistic hourglass figure
+\end{center}
+
+\vspace{3em}
+
+% === PROGRAM INFO ===
+\begin{center}
+    \Large MSc Physics and Astronomy\\[0.3em]
+    \Large Master's Thesis
+\end{center}
+
+\vspace{2em}
+
+% === TITLE OF THESIS ===
+\begin{center}
+    \rule{\textwidth}{0.4pt}\\[0.3em]
+    {\LARGE\bfseries
+    Building Position Sensing System for the\\[0.3em]
+    Reference Mass of OmniSens}\\[0.5em]
+    - a Potential Technology for Einstein Telescope at Low Frequency Science
+    \rule{\textwidth}{0.4pt}
+\end{center}
+
+
+\vspace{1em}
+
+% === AUTHOR INFO ===
+\begin{center}
+    \normalsize by\\[0.1em]
+    \textbf{Zhao-Qing Lin}\\[0.1em]
+    13678671
+\end{center}
+
+\vspace{1em}
+
+% === SUPERVISOR AND OTHER DETAILS ===
+\begin{center}
+\begin{tabular}{ll}
+Supervisor: & Dr. C. Mow-Lowry \\
+Second Examiner: & Dr. ing. M.G. van Beuzekom \\
+Daily Supervisor: & Dr. M. Valentini\\
+Date: & February 11, 2024 \\
+Credits \& Period: & 60 ECTS, September 2024 – August 2025 \\
+\end{tabular}
+\end{center}
+
+\vspace{2em}
+
+
+
+
+\vspace*{-2cm}
+
+\thispagestyle{empty}
+\end{titlepage}
+
+\newpage
+
+\begin{abstract}
+
+
+Gravitational waves reveal hidden aspects of the universe beyond the reach of other cosmic messengers, yet their detection demands extreme sensitivity. Following the success of LIGO and Virgo, a next generation gravitational wave detector, the Einstein Telescope, aims to achieve greater sensitivity and longer observation time, particularly at low frequencies. This will enable the detection of more massive and earlier cosmic events, leading to breakthroughs in astrophysics and fundamental physics.
+
+To meet these challenges, the OmniSens project introduces a fundamentally new concept: a six-degree-of-freedom inertial isolation system inspired by a drag-free control scheme, that simultaneously achieves high sensitivity at low measurement frequencies, with the benefit of tilt-to-translation decoupling, low force noise, and small dynamic range. Its sensitivity improvement of OmniSens beyond the-state-of-art is guaranteed by a precise position sensing scheme, led by Homodyne Quadrature Interferometers (HoQIs) with other sensors for broadband sensing of the reference mass. 
+
+This work focuses on the combination use of two sensors surrounding the reference mass: HoQIs for inertial readout and a capacitive position sensor (CPS) for locating the centre position of the end mass of the reference mass within the sensing frame. The CPS was developed from scratch, and a static performance test was performed in air for one horizontal degree of freedom. It achieves absolute position sensing with an optimized noise floor below $7\times 10^{-8}\, \text{m}/\sqrt{\text{Hz}}$ at 0.1\,Hz, and its voltage-to-position transfer function is independent of the output cabling. The result validates the success of the CPS-HoQIs sensing approach in meeting OmniSens' operation goals. Working conditions, potential malfunction mechanisms, and directions for future investigation are also discussed. 
+
+% Inspired by drag-free satellites, OmniSens transfers the inertial stability of a softly suspended reference mass to its active platform, further creating a quiet environment for the reference mass. 
+
+\thispagestyle{empty}
+\end{abstract}
+
+\newpage
+\setcounter{page}{1}    % Start at page 1
+\thispagestyle{plain}
+\tableofcontents
+
+
+\newpage
+\numberwithin{equation}{section}
+
+
+
+% ========= Chapter 1 Introduction =======
+
+\section{Introduction}
+  
+
+
+The first direct observation of gravitational waves from a binary black hole system was made by Laser Interferometer Gravitational-Wave Observatory (LIGO) and Virgo collaboration in 14th September 2015 \cite{PhysRevLett.116.061102}. This discovery not only confirmed general relativity's prediction of the existence of gravitational waves, but also provided a new approach of probing the properties of non-linear strong gravitational field dynamics \cite{einstein_1920}.
+
+
+
+
+This chapter first introduces the gravitational waves physics, followed by an overview of ground-based interferometric detectors. The benefits and challenges of low-frequency gravitational wave detection are discussed. Finally, the scientific goals and technical challenges of the Einstein Telescope (ET) are briefly outlined.
+
+
+
+\subsection{Gravitational Waves Physics} 
+
+Einstein's theory of general relativity \cite{einstein_1920} relates the gravity to the curvature of spacetime. In theory, asymmetric variations in the distribution of mass–energy produce distortions in spacetime that propagate through the universe as ripples, known as gravitational waves. The strain of a gravitational wave is defined as the magnitude of the distortion relative to the original spacetime:  
+
+\begin{equation}\label{eq: strain}
+    h(t) = \frac{\Delta L}{L}
+\end{equation}
+
+However, gravitational waves from ordinary astrophysical objects are far too weak to be detected by current instruments. One way to overcome this limitation is to search for exceptionally energetic cosmological events. Figure \ref{fig: mass spectrum}.a) shows the frequency spectrum of gravitational waves generated by different cosmological events, together with the planned sensitivity curves of various gravitational wave detectors, illustrating the range of accessible cosmological information. Figure \ref{fig: mass spectrum}.b) presents four types of gravitational waves sources and their characteristics \cite{ligo_gw_sources}: 
+
+\begin{itemize}
+    \item \textbf{Compact binary inspiral gravitational waves} are produced by orbiting pairs of massive and dense objects such as binary neutron star (BNS); binary black hole (BBH), and neutron star-black hole binary (NSBH). The signal begins at low frequency during the inspiral phase, with frequency and amplitude increases as the orbit decays, peaks at the merger, and is followed by a ringdown behaviour.
+    \item \textbf{Continuous gravitational waves} are expected from a single spinning object such as a neutron star, producing a long-lasting signal with stable frequency and amplitude. 
+    \item \textbf{Burst gravitational waves} originate from transient event with extreme energy release. Supernova burst is one of the candidates of such gravitational waves sources.
+    \item \textbf{Stochastic gravitational waves} are predicted to arise from the superposition of numerous weak gravitational waves signals coming from across the universe, forming a persistent, irregular gravitational waves background. 
+\end{itemize}
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2.5cm}{-2.5cm}
+    \begin{subfigure}{0.52\linewidth}
+        \includegraphics[width=\linewidth]{figure/Chap1_spectrum.png}
+        \caption*{\textbf{a)}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width = \linewidth]{figure/Chap1_sources.png}
+        \caption*{\textbf{b)}}
+    \end{subfigure}
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{\textbf{a)} The frequency spectrum of the gravitational waves generated by different sources, along with their characteristic strain. The planned sensitivity curve of several gravitational waves detectors are plotted. Figure reproduced from \cite{GWPlotter}. \textbf{b)} Four typical types of the gravitational waves sources. Figure adapted from \cite{Galaudage_S}. }
+    \label{fig: mass spectrum}
+\end{figure}
+
+
+
+Among these, compact binary star systems are the primary sources for current detections. As a unique messenger, gravitational waves possess several remarkable properties distinguishing them from other messengers. They convey information with minimal loss and grant access to regions of the universe that are inaccessible to light, including the very early universe. Observing these ripples enables us to identify and study their sources and related astrophysical topics, such as the formation and population of astrophysical objects, the search for dark matter, and the properties of the early universe. For typical gravitational waves sources such as binary star mergers, the waves are emitted before the merger happens. Detecting these signals in advance creates a time window to alert observatories using other messengers to follow up, starting a new era of multi-messenger observations.
+
+
+
+% ============== Chap1 Sec2 Gravitatioanl  Waves Detection
+
+\subsection{Ground Based Gravitational Waves Detection}
+
+Detectable gravitational waves can be modelled by wave-like solutions to the linearized weak-field equations \cite{Einstein:1918btx}. They behave as transverse waves with two polarization states, exserting stretching and squeezing of spacetime in perpendicular directions, as illustrated in Figure \ref{fig: polorization}.
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figure/Chap1_polarization.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Two polarizations of gravitational waves distorting the spacetime. Figure reproduced from \cite{shawhan2004gravitational}.}
+    \label{fig: polorization}
+\end{figure}
+
+
+
+These spacetime distortions induced by gravitational waves can be detected by precise measurements of the distance between free-floating reference masses \cite{bond_interferometer_2016}. Ground-based detectors use enhanced Michelson interferometry with suspended mirrors to directly measure these relative changes with high precision. A simple Michelson interferometer, shown in Figure \ref{fig:Michelson}, conceptually demonstrated how a gravitational wave signal is converted into a measurable quantity.
+
+
+
+
+\begin{figure}[!htb]
+    \begin{adjustwidth}{-2cm}{-2cm}
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap1_Michelson.pdf}        
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Concept of a simple Michelson interferometer with end mirrors serving as reference masses. When a gravitational wave propagates perpendicular to the plane of the interferometer, one arm shortens while the other lengthens, resulting in a difference in the round-trip travel time of the laser light beams. This time difference produces a phase shift, which is translated into a change in power at the output photodiode after the interference. From this change, the length distortions introduced by the gravitational wave can be reconstructed. Figure reproduced from \cite{bailes_gravitational-wave_2021}.}
+    \label{fig:Michelson}
+\end{figure}
+
+
+In the first direct observation of the gravitational wave, named GW150914, the signal matched the model of the spiral and merger of two black holes (36\,$M_{\odot}$ and 29\,$M_{\odot}$), followed by the ringdown of a single 62\,$M_{\odot}$ black hole as the result of the merger. The gravitational wave from this colossal astrophysical event induced a length change of approximately $10^{-18}$\,m with respect to the $4$\,km arms of the two ground based interferometer, LIGO Livingston and LIGO Hanford. As shown in Figure \ref{fig: mass spectrum}.a), the strain of gravitational wave signals is incredibly small. Detecting such a subtle change in length requires instruments of extreme precision, making gravitational wave detectors the most sensitive length-measuring instruments ever built.
+
+
+Constructing and maintaining detectors with this level of sensitivity presents significant technical challenges, particularly the suppression of noise over a wide frequency range. Characterizing noise in gravitational-wave detectors is essential for validating results obtained from passing gravitational waves \cite{Alex_thesis}. The noise budget for the LIGO Hanford Observatory, shown in Figure \ref{fig: Noise budget of LIGO}, illustrates the contributions of various noise sources across the frequency spectrum. These include fundamental noises, such as laser shot noise and thermal noise, as well as technical noise arising from detector control systems and environmental disturbances. Suppressing these noise sources improves the signal-to-noise ratio (SNR) of gravitational wave signals, thereby enabling the detection of more and weaker events. The work presented in this thesis specifically focuses on seismic noise at low frequencies.
+
+
+
+\begin{figure}[!htb]
+\begin{adjustwidth}{-1.5cm}{-1.5cm}
+    \centering
+    \includegraphics[width = \linewidth]{figure/Chap1_Full_NB_LHO.pdf}    
+\end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Full noise budget of LIGO Hanford Observatory (LHO), with solid lines representing the calculated noises and dot lines representing the measured contributions. The instrument noise floors for previous observing runs are also plotted. Figure reproduced from \cite{list_sensitivity_2020}.}
+    \label{fig: Noise budget of LIGO}
+\end{figure}
+
+
+
+
+% ========= Chap1 Sec3 Low Frequency Science and Einstein Telescope ===========
+
+\subsection{Low Frequency Science and the Einstein Telescope}
+
+
+Low-frequency gravitational-wave detection is of great scientific importance. Such waves carry information from the early universe at higher redshift, and binary systems with more massive objects \cite{PhysRevLett.120.141102}. The signal strengths from various gravitational waves sources, compared with the noise amplitude spectrum of three gravitational detectors, as shown in Figure \ref{fig: low frequency science}.a), illustrating which sources are detectable above noise. Early detection at low frequencies also extends the observation time within the detector’s sensitivity band of binary mergers. 
+
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2.8cm}{-2.2cm}
+    \begin{subfigure}{0.44\linewidth}
+        \includegraphics[width = \linewidth]{figure/Chap1_lowf_science.pdf}
+        \caption*{\textbf{a)}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.54\linewidth}
+        \includegraphics[width = \linewidth]{figure/Chap1_ET_sensitivity-goal.png}
+        \caption*{\textbf{b)}}
+    \end{subfigure}        
+    \end{adjustwidth}
+    
+    \captionsetup{width = 0.8\linewidth}
+    \caption{\textbf{a)} Noise amplitude spectrum of three generations of ground-based interferometers, along with the expected amplitude spectrum of various narrow and broad-band astrophysical sources. Figure reproduced from \cite{sathyaprakash_physics_2009}. \textbf{b)} Comparison of LIGO and Virgo performance during the O3 observing run with ET design sensitivity, including a breakdown of the dominant seismic noise sources across different frequency bands highlighted in coloured boxes. An improvement of approximately $10^6$ is expected at 3\,Hz. The dash line and arrows indicate the level of improvement required for ET to achieve its sensitivity goal using new technologies. Figure reproduced from \cite{ET_design}. }
+    \label{fig: low frequency science}
+\end{figure}
+
+
+However, current terrestrial detectors are heavily limited heavily below 10\,Hz by an effect referred to as the \say{seismic wall}, where seismic noise and Newtonian noise, the seismic-wave-induced gravitational disturbances, set the sensitivity limit in low frequency range \cite{zhang2025et}. As a result, the observation rate and SNR for many highly interesting sources in low frequency range remain too low within the current detection range \cite{maggiore_science_2020}.
+
+
+The Einstein Telescope (ET), a next generation gravitational wave detector, aims to push the \say{seismic wall} towards lower frequency and reduce the noise floor to achieve order-of-magnitude improvement in sensitivity relative to the design sensitivity of Advanced Virgo and Advanced LIGO, as compared in Figure \ref{fig: low frequency science}.b), and extend the detection band down to 3\,Hz. New technologies are required to suppress low-frequency noise, including constructing the ET underground and employing cryogenic systems to reduce the impact of thermal noise.
+
+The research group in which I conducted my master’s project is developing a new technology to mitigate seismic noise, with a particular focus on reducing tilt-to-horizontal coupling.
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+% ===================== Chapter 2 ==========================
+
+\section{The OmniSens Project}
+
+
+To achieve the ambitious goals of ET, particularly in the low-frequency range, cutting-edge seismic isolation techniques are needed to push the “seismic wall” to lower amplitudes and frequencies.
+
+OmniSens \cite{mow-lowry_6d_2019} is such a project providing a first-stage seismic isolation for the gravitational waves detector, enabling ET to detect and distinguish astrophysical signals of interest down to 3\,Hz. It is a novel six-degree-of-freedom interferometric inertial isolation system that utilizes a drag-free control scheme, making it among the world's most sensitive inertial sensors.
+
+
+
+% ========= Chap2 Sec1 drag-free control ========
+
+
+
+\subsection{Design of the OmniSens}\label{sec: design}
+
+OmniSens is an inertial isolation that is conceptually simple but fundamentally new in ground-based gravitational wave detectors. It employs a softly suspended reference mass, and transfers its inertial stability to the six-axis active platform through a robust control and sensing system. The active platform can be served as an quiet environment that enables the reference mass to approximate free-floating on top of it. 
+
+OmniSens incorporates two stages of passive filtering and a drag-free control scheme with their location labelled in Figure \ref{fig:omnisens_2D}. A CAD rendering of the OmniSens is shown in Figure \ref{fig: CAD and layers}, with inner layer structures on the right. Stage 0 is the base that is attached to the ground. Three supports fixed on Stage 0 are equipped with titanium blades and flexures, and the active components enabling Stage 1 to move freely in six degree-of-freedom. Stage 1 is suspended from Stage 0 using the blade-springs and is actively controlled to follow the reference mass. On the top of Stage 1 is a breadboard that serves as an \say{optical bench}. Mounted on the breadboard are the tripod suspending the reference mass, the sensor and actuator frames surrounding the ends of reference mass (end mass), and mass blocks used to balance the active platform.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap2_Omnisens_CAD_with_layers.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{A CAD rendering of OmniSens, with its layered structure shown on the right. From top to bottom, the components are: a three-arm reference mass suspended by a silica fibre; the active platform (Stage 1); and the base (Stage 0), which is attached to the ground.}
+    \label{fig: CAD and layers}
+\end{figure}
+
+
+Lowering the resonance frequency helps to mitigate vibrations in the same degrees of freedom, but vibrations can leak to other degree of freedom through coupling. When suppressing the ground motion, the most challenging issue is the frequency-dependent coupling of vertical rotation to horizontal translation induced by gravity, naming tilt-horizontal coupling. This effect introduces noise that dominates at frequency goes below 0.1 Hz \cite{matichard_review_2015}. OmniSens provides an effective solution to this problem and addresses other critical challenges in terrestrial low-frequency inertial isolation, including large forces acting on the reference mass, sensing and control noise, and the large dynamic range.
+
+The reference mass is geometrically large and radially symmetric, with most of its mass concentrated at the ends of its three arms. The properties of the reference and fibre are shown in Figure \ref{fig: reference}. This configuration results in a moment of inertia sufficient to achieve a tilt resonant frequency of approximately 5\,mHz, well below the frequency of the horizontal pendulum modes, enabling the inertial sensors to distinguish and suppress the tilting respect to the $x-y$ plane. By suspending the reference mass near its centre of mass from a fused silica fibre with low thermal noise and low stiffness in horizontal rotation, all degrees of freedom are nearly equally well isolated. This design intrinsically reduces cross-coupling, and minimizes the force noise and dynamic range of sensors for the control and sensing systems. 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap2_reference_mass.png}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{A CAD rendering of OmniSens reference mass and its suspension, with their properties listed in the table on the left.}
+    \label{fig: reference}
+\end{figure}
+
+OmniSens will be installed in a clean vacuum chamber to mitigate the effects of thermal fluctuations and air disturbances affecting the optical sensors and the reference mass. In the future, a thermal shield will be housed around the reference mass, providing further isolation from temperature-induced imbalance.
+ 
+
+
+
+
+
+
+
+
+% ======= Chap2 Sec3 Control and Sensing ======
+
+\subsection{Control and Sensing}\label{sec: Control and Sensing}
+
+The control scheme in OmniSens is inspired by drag-free satellites, such as the Laser Interferometer Space Antenna (LISA) \cite{fichter_lisa_2005}. The principle is to maintain a cage at a fixed position relative to a free floating reference mass inside the cage. In a noisy environment, the inertial stability of the reference mass propagates to the cage, and by placing the reference mass inside such a stable cage, the transmission of some external accelerations gets further suppressed to the reference mass.
+
+To adapt this control strategy onto OmniSens, there are three sets of sensors and two sets of actuators on top of the passive suspensions. The active platform serves as the cage, and the relative position of the reference mass is omni-directionally sensed by high resolution sensors located on the active platform. A high-gain closed-loop holds the active platform still to a working position that minimizes the non-linearity of the mechanical response.
+
+See Figure \ref{fig:omnisens_2D} for the positions and 3D rendering of the control and sensing structures. Two sets of conventional displacement sensors are combined to position the reference mass. The Birmingham Optical Sensors and Electromagnet Motors (BOSEM) in Figure \ref{fig:omnisens_2D}.B) sense the distance between the ground and the active platform, and Capacitive Position Sensors (CPS) in Figure \ref{fig:omnisens_2D}.A) sense the absolute distance between the reference mass and the active platform. A set of interferometers, Homodyne Quadrature Interferometer sensors (HoQIs) in Figure \ref{fig:omnisens_2D}.A) sense the inertial motion of the reference mass. Large electromagnetic coils in Figure \ref{fig:omnisens_2D}.B) drive the active platform to follow the reference mass, while electrostatic drivers (ESD) in Figure \ref{fig:omnisens_2D}.A) provide a low noise fine control to compensate for drift of the reference mass caused by possible noise mechanisms such as thermal gradients, in six-degree-of-freedom at lower frequencies. Together, these two actuators establish a quiet operational cycle for seismic noise isolation, requiring only a small dynamic range. 
+
+In the end-mass sensing system, each of the three end masses must be equipped with well-aligned CPS–HoQI sensor pairs in both the horizontal and vertical directions to locate the end mass within the sensing frame and preserve its inertial stability. Whenever a new equilibrium of the reference mass is established, the CPS is used to identify its new null point by driving the active platform to position the end mass at the CPS sensing centre. The HoQIs then measure the inertial motion of the active platform relative to the reference mass with high sensitivity.
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-1cm}{-1cm}
+        \centering
+        \includegraphics[width=0.7\linewidth]{figure/Chap2_omnisens_2D_with_sensors.png}
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Simplified, not-to-scale 2D schematic of the OmniSens design, with passive isolation labelled as \textbf{a)} and \textbf{b)}, sensors and actuators labelled as \textbf{A)} and  \textbf{B)}.\\
+    \textbf{a)} Three blades-springs system consisting of Titanium blades and flexures suspends the active platform from the ground.\\
+    \textbf{b)} The reference mass is suspended from a rotation stage, which is mounted on the top of the tripod, by a low thermal noise silica fibre. The rotation stage is a stepper motor used to correct the torsional drift of the reference mass.\\
+    \textbf{A)} One of the three end masses, with its frame fixed to Stage 1. Two HoQIs and eight CPS electrodes are mounted on the same frame to measure the absolute position of the end mass relative to the frame. The electrostatic drive (ESD) uses the same electrodes to actuate the reference mass suspension.\\
+    \textbf{B)} BOSEMs and coils, attached to Stage 0, measure the relative position between the platform and the ground, and drive the platform to follow the reference mass.}
+    \label{fig:omnisens_2D}
+\end{figure}
+
+
+
+HoQI is the key to the OmniSens' performance, since it preserves the lowest noise across the entire frequency range of interest as demonstrated in Figure \ref{fig: three sensors noise}. At 0.1\,Hz, below which the tilt-to-horizontal coupling becomes dominate, the displacement noise of the optimized CPS in Section \ref{sec: measurement} is $8\times 10^{-8}$\,m/$\sqrt{\text{Hz}}$, and HoQI' noise is $1\times 10^{-12}$\,m/$\sqrt{\text{Hz}}$, yielding a $10^{5}$ improvement on the sensitivity. When used to measure the inertial movement of the reference mass, the noise from HoQIs becomes the final local sensor noise injected into the active control loop, ultimately setting the constraints for OmniSens' sensitivity.
+
+
+\begin{figure}[!phtb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_CPS_HoQI_BOSEM.png}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{Displacement noise spectrum of three displacement sensors on OmniSens. The CPS data was obtained using 5\,m cables with the updated board. The HoQIs 24 data is provided by \cite{Alex_thesis}, and BOSEM data is from LIGO A+ upgrade \cite{cooper_sensors_2023}. }
+    \label{fig: three sensors noise}
+\end{figure}
+
+
+\newpage
+
+
+\textcolor{white}{emmmm}
+
+\newpage
+
+
+% =========== CHAPTER 3 =================
+
+\section{Displacement Sensors for the End Mass}
+
+
+Section \ref{sec: Control and Sensing} introduced the overall working principle of the active isolation in OmniSens. A sensing system capable of measuring the relative motion between the reference mass and the active platform in all six degrees of freedom is the start for implementing the drag-free control strategy. This is performed by the CPS and HoQIs shown at the each end mass Figure \ref{fig:omnisens_2D}.A). In this chapter, I will present the design of two displacement sensors. Since the CPS for OmniSens was developed from scratch, this chapter investigates its analytical transfer function, simulations, upgrades, and preliminary calibration in one translational degree of freedom. The experimental setup and data acquisition (DAQ) system are also described.
+
+
+% ========== Chap3 Sec1 Set up =======
+
+\subsection{Experimental Setup}\label{sec: experiment setup}
+
+Since three end masses and their surrounding sensor frames are identical and located at the ends of arms with $120^{\circ}$ rotational symmetry, we can simplify the OmniSens' reference mass position sensing by focusing on one end mass system. In the OmniSens' design, the six-degree-of-freedom are well decoupled, thus one-dimensional displacement sensing provides significant insights to the working scenario. Figure \ref{fig: lab setup}.a) shows the experimental setup of the end mass system. A connection structure, shown in the green frame in Figure \ref{fig: lab setup}.a), attaches a protophyte of end mass cube made from aluminium, which will be replaced with bronze in the operational OmniSens, to the cart on the micrometric screw. The micrometric screw allows preliminary calibration of the CPS before switching to HoQI and also provides a one-dimensional translation to simulate operational scenario.  
+
+
+\begin{figure}[!htb]
+    \centering
+    % First subfigure
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\linewidth]{figure/Chap3_setup.png}
+        \caption*{\textbf{a)}} % label at bottom-left
+    \end{subfigure}
+    \hfill
+    
+    % Second subfigure
+    \begin{subfigure}{\textwidth}
+    \centering
+        \includegraphics[width=\linewidth]{figure/Chap3_frame_and_frame.png}
+        \caption*{\textbf{b)}} % label at bottom-left
+    \end{subfigure}      
+    \captionsetup{width=0.8\linewidth}
+    \caption{\textbf{a)} The end mass and frame setup viewed from the left and front sides. One vertical HoQIs and one horizontal HoQIs are installed. The yellow frame shows the micrometric screw fixed on the rack with a cart on top of it, which has a resolution of 0.01\,mm. The green frame shows the connection between the end mass cube and the cart. Four cables connected to the electrodes in the horizontal plane are labelled LU (Left Up), LD (Left Down), RU (Right Up), and RD (Right Down). The signal is injected in the test mass trough a capacitor, emulating what will be done in the final setup in order to not have any direct contact between test mass and surrounding environment other than the silica fibre. \textbf{b)} A CAD rendering of the end mass and sensing frame from the left and front. The vertical and horizontal CPS and HoQIs are highlighted.}
+    \label{fig: lab setup}
+\end{figure}
+
+
+From the CAD design, Figure \ref{fig: lab setup}.b), two HoQIs are mounted on the outer side of the frame, one in the horizontal direction and the other one in the vertical direction. Eight CPS electrodes are fixed to the inner side of the frame, with two parallel electrodes attached to each of its four sides. Two pairs of electrodes on opposite sides form one CPS sensor. 
+
+On each side of the frame, as shown in the layered structure in Figure \ref{fig: horizontal HoQIs setup} (right), a metal stop is positioned between the two electrodes. This metal stop set the maximum moving range $x_{\text{move}}$ of the end mass, preventing it from hitting the electrodes. The electrodes are mounted to the frame from a plate using insulating spacers, and each electrode is connected to the output cables through a connection spigot, which leads to the CPS electronic board in Figure \ref{fig: electronics board and analytical model}.a). If the end mass touches the stops, it will be shorted, causing the output signal to drop suddenly to zero, which indicates that the end mass has reached its mechanical limits.
+
+The two HoQIs in the end mass system have identical setups. A layered setup of horizontal HoQI is shown in Figure \ref{fig: horizontal HoQIs setup} (left). Two cams on the adjusting plate are used to move the HoQI within the frame plane. By rotating the cams, optimal interference with the retroreflector inside the end mass can be achieved, resulting in the highest fringe visibility. 
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-1cm}{-1cm}
+    \centering
+        \includegraphics[width=\linewidth]{figure/Chap3_HoQI_CPS_frame.png}
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Setup for horizontal HoQI (left) and the horizontal CPS on single side (right).}
+    \label{fig: horizontal HoQIs setup}
+\end{figure}
+
+
+The geometric parameters of the setup excluding HoQIs and the vertical CPS electrodes are labelled in Figure \ref{fig: parameters}, with their values summarized in Table \ref{tab: parameters}. The gaps between the two planes of the electrode and the end mass are labelled as $x_1$ on the left and $x_2$ on the right. When the end mass is sitting on the centre position of the electrodes, $x_1 = x_2 = x_0$, thus $x_0 = 1.15$\,mm. If the end mass is displaced by $x$ to the right away from the central position, the gaps become $x_1 = x_0 +x $ and $ x_2 = x_0 - x$. The maximum moving range of the end mass $x_\text{move} = l_\text{stop} - l_\text{EM} = 1.48$\,mm. Apart from $l_\text{stop}$, which was measured using the micrometric screw, all the other parameters were measured using a caliper with a resolution of 0.01\,mm. 
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=0.8\linewidth}
+    \includegraphics[width=0.7\linewidth]{figure/Chap3_parameters.png}
+    \caption{A 2D scheme of the CPS and end mass system. HoQIs and the vertical CPS electrodes are not shown. Geometric parameters are labelled, and their descriptions and values of the parameters are summarized in Table \ref{tab: parameters}.}  
+    \label{fig: parameters}
+\end{figure}
+
+
+The distances between the electrodes and the frame $l_L$ and $l_R$ differ from the designed values, resulting a $15\%$ discrepancy in $x_0$ between the design and the actual setup. Several factors could contribute to the discrepancy, such as compound machining tolerance of the electrodes, plates and insulating plates, and eventual compression of the insulating plates during the assembly procedure. 
+
+
+
+\begin{table}[!htb]
+    \centering
+    \captionsetup{width=0.8\linewidth}
+    \caption{The geometry parameters and of the end mass system without HoQIs and the vertical CPS. The measured values and designed values are compared in the table.  }
+    \begin{adjustwidth}{-2cm}{-2cm} 
+    \label{tab: parameters}
+    \centering
+    \begin{tabular}{l c r r} % Three columns: left, center, right aligned
+        \toprule
+        \toprule
+        Parameter & Description & Value (Measured) & Value (Designed) \\ \midrule
+        $l_\text{frame}$ & Width of the outter frame & 132.00\,mm & 132.00\,mm\\
+        $l_\text{frameL}$ & Thickness from the frame to mounting plate (left) & 20.00\,mm & 20.00\,mm\\
+        $l_\text{frameR}$ & Thickness from the frame to mounting plate (right) & 19.99\,mm & 20.00\,mm \\
+        $l_\text{L}$& Distances between the electrodes and the frame (left)& 29.83\,mm & 30.00\,mm\\
+        $l_\text{R}$& Distances between the electrodes and the frame (right)& 29.87\,mm & 30.00\,mm  \\ 
+        $l_\text{EM}$& Width of the end mass cube & 70.00\,mm & 70.00\,mm\\
+        $l_\text{stop}$& Distance between two metal stops & 71.48\,mm & 71.50\,mm\\
+        $d$& Thickness of one electrode & 10.00\,mm & 10.00\,mm\\
+        $A$& Area of one one electrode plate & $--$ & 4.50\,cm$^2$ \\
+        \bottomrule
+        \bottomrule
+    \end{tabular}
+    \end{adjustwidth}
+\end{table}
+
+\subsection{Data Acquisition}
+
+The data acquisition system designed for this experiment, along with the OmniSens project, is based on software and hardware architecture used in Virgo. This includes data processing packages such as \texttt{Virgotools} \cite{Virgotools}, \texttt{GWpy} \cite{GWpy}, and a real-time digital control system called Algorithms for Control and Locking (\texttt{ACL}) \cite{ACL}. 
+
+Part of the DAQ hardware setup of this experiment is shown in Figure \ref{fig: rack}. The Virgo DAQ box \cite{DAQ_box} serves as a DAQ interface. It receives commands from a real-time computer (RTPC), which is connected to the internet, enabling remote control and data acquisition. The DAQ box hosts the digital-to-analog converter (DAC) and the analog-to-digital converters (ADCs) for the CPS, and the ADC for HoQIs. The HoQIs preamplifiers are transimpedence amplifiers that convert the photodiodes currents into voltages. The SR560 preamplifier amplifies the CPS input signal from the DAC. A Moku:Pro was used for multiple quick checks, including monitoring the fringe visibility of HoQIs during tuning the interference on the frame. The power supply is set to 5V to drive the amplifiers on the electronics board shown in Figure \ref{fig: electronics board and analytical model}.a). The electronics board is the main module to process the output signals from the four electrodes and provide a stable gain $G$ from the voltage readout to the displacement $x$ that is independent of the cabling.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figure/Chap3_rack.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{The DAQ setup for the CPS and HoQIs in the lab. The RTPC is connected from outside the lab. }
+    \label{fig: rack}
+\end{figure}
+
+
+
+
+    
+% ========== Chap3 Sec1 CPS =========
+
+\subsection{The Capacity Position Sensor (CPS)}\label{sec: CPS}
+
+The CPS is a mature technology widely used in position measurement in ground-based \cite{matichard_review_2015} and space-based gravitational waves detectors \cite{josselin_capacitive_1999}. It employs a straightforward differential sensing method: the electrode plate and the target form a capacitor whose impedance depends on the distance between their surfaces. By placing the target in between a pair of electrodes with a fixed separation, the impedances of two capacitors, as well as their difference, have a one-to-one mapping to the target's position. Here we describe this voltage-to-position relationship as a transfer function from voltage to the position with a gain of $G$. Thus, when applying a voltage to the end mass, the position of the end mass can be determined using the system’s transfer function $x = GV_{\text{CPS}}$. The gain $G$ would only depend on the displacement $x$, assuming a fixed setup configuration and the input voltage.
+
+
+
+In the OmniSens project, if the end mass has a translational displacement $x$ from the sensing centre, the capacities of two capacitors pairs are: 
+
+\begin{equation}
+    C_{LU} = C_{LD} = \frac{\epsilon A}{x_0+x}, \ \ C_{RU} = C_{RD} = \frac{\epsilon A}{x_0-x}
+\end{equation}
+
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_ACL for CPS.pdf}
+    \captionsetup{width=0.8\linewidth}
+    \caption{CPS setup and DAQ system.}
+    \label{fig: ACL for CPS}
+\end{figure}
+
+A simplified schematic of the CPS working flow in the horizontal direction is shown in Figure \ref{fig: ACL for CPS}. A digital source signal \texttt{CPS\_LINE} is generated from the RTPC as a normalized sinusoid wave $\sin(2\pi ft)$, with frequency $f = 10 \,$kHz and sampling frequency $f_{\text{sampling}} = 50$\,kHz. The DAC converts the \texttt{CPS\_LINE} into a differential analog signal $V_{\text{in}}$ and sends it to the SR560. The SR560 preamplifier amplifies the CPS input signal $V_{in}$ from the DAQ box and converts it into an 8.4V peak-to-peak single-ended signal $V_0$. The amplitude of $V_0$ is confirmed both by measurement with the Moku and by direct input to the ADC. In parallel, the same signal is routed directly to the ADC in the same DAQ box as \texttt{CPS\_LINE\_RAW}, and is demodulated with the digital \texttt{CPS\_LINE} in the RTPC, to obtain a phase delay $\phi$ only due to the round-trip path from the RTPC to the DAQ box.The signal $V_0$ then propagates through the end mass system, with the connections shown in Figure \ref{fig: lab setup}.a). 
+
+The electronics board that receives the output signals coming from the four electrodes is shown in Figure \ref{fig: electronics board and analytical model}.a), with notations explained in Figure \ref{fig: electronics board and analytical model}.b). The output amplifiers on the board provide a total gain of 50 and take the difference between the voltages after $C_7$, $C_8$ and $C_9$, $C_{10}$, producing a signal $V_{\text{out}}$ that is later recorded as \texttt{CPS\_1\_H\_RAW}. Here, \say{\texttt{1}} refers to one specific end mass systems out of three, and \say{\texttt{H}} denotes the horizontal direction. In this experiment, the horizontal CPS output signal is labelled as \texttt{CPS\_1\_H\_RAW}. 
+
+In the RTPC, \texttt{CPS\_1\_H\_RAW} is demodulated with \texttt{CPS\_LINE}, including the additional phase delay $\phi$ and a phase tuning of $\phi_0$. The phase tuning is adjusted to compensate for the phase delay within the end mass system, until the out-of-phase channel of \texttt{CPS\_1\_H\_RAW} remains close zero during the end mass motion. Thus, the final output \texttt{CPS\_1\_H\_DEMOD\_i} represents the in-phase channel after demodulation with \texttt{CPS\_LINE}, and is denoted as $V_\text{CPS}$ throughout this thesis. 
+
+In this way, we can calibrate the CPS output voltage $V_\text{CPS}$ with the displacement $x$. By inverting this calibration, the voltage-to-displacement transfer function of the end mass is obtained: $x = G(x) V_\text{CPS}$, making the CPS an absolute position sensor.
+
+ 
+
+\begin{figure}[!p]
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figure/Chap3_CPS_electronics_board.png}
+        \caption*{\textbf{a)}}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figure/Chap3_Analytical model.pdf}
+        \caption*{\textbf{b)}}
+    \end{subfigure}
+    
+        \captionsetup{width=0.8\linewidth}
+        \caption{\textbf{a)} The electronics board of the CPS. \textbf{b)} Schematic of the CPS electronics, excluding the output amplifiers. The main components shown include: the end mass and horizontal CPS, cables with braid, and the electronics board before amplification. Components labelled in red indicate the unknown impedance values, which can only be determined through estimation and curve fitting. A schematic of the full circuit including the amplifiers can be found in Figure \ref{fig: simulation}.a). } 
+        \label{fig: electronics board and analytical model}
+\end{figure}
+
+
+
+Three methods are used to calibrate $V_\text{CPS}$ to the position $x$: analytical calculation, simulation and the measurement. In Section \ref{sec: analytical and simulation}, the analytical transfer function $x = G_\text{ana}(x)V_\text{CPS}$ is derived, including the analysis of the effects of several components with variable impedance. A simulated transfer function is obtained using \textit{LTspice} and compared with the analytical result, along with a polynomial fit for the calibration. In Section \ref{sec: measurement}, the CPS was calibrated using the micrometric screw, giving a preliminary transfer function. A more precise calibration was performed using HoQI in Chapter \ref{chap: results}. By comparing this with the analytical gain $G_{\text{ana}}(x)$, we troubleshoot and updated the electronics board and the cabling to achieve a stable gain and optimized noise performance.
+
+
+% =========== Chap3 Sec2.1 Analytical model =======
+
+\subsubsection{Analytical Model and Simulation}\label{sec: analytical and simulation}
+
+The circuit schematic of the CPS before the amplifiers is shown in Figure \ref{fig: electronics board and analytical model}.b). The input signal $V_0 = 4.2\sin(2\pi ft)$\,V with $f = 10$\,kHz is injected to the end mass system through a capacitor $C_1$. $C_2$ represents the stray capacitor between the end mass and its surroundings. The four CPS capacitors are $C_{LU},\ C_{LD},\  C_{RU}, \ \text{and} \ C_{RD}$,  where $C_{LU} $ and $ C_{LD}$ share the potential $V_1 - V_L$ on the left branch, and $C_{RU} $ and $ C_{RD}$ share the potential $V_1 - V_R$ on the right branch. 
+
+$C_3,\ C_4,\ C_5,\ C_6$ accounts for the capacitors between the output coaxial cables and the guard, and the voltage applied on them is $(V_{L} - V_{LC})$ and $(V_{R}-V_{RC})$ respectively. The buffers in the blue blocks are the major upgrade to the electronics board. These buffers eliminate the dependence of gain $G$ on the output cabling, which is verified in both calculation and measurement. Capacitors $C_7, \ C_8, \ C_9, \ C_{10}$ serve as drive biases for the electrostatic actuators that share the same electrodes as the CPS. $C_{11}$ and $C_{12}$ are the capacitors between the board and the ground. $R_1$ and $R_2$ are used to divert the DC signal to the ground to prevent amplifier saturation. $R_{Lr}$ and $R_{Rr}$ are reference resistors only used for setting voltage probing points after the buffers for the transfer function calculation, and are assumed to have effectively infinite resistance.
+
+Before proceeding with the calculation, we define several parameters to simplify the derivation. The capacitances of four capacitors for the CPS are:
+
+
+\begin{align}\label{eq: parameters of transfer function 1}
+    \begin{split}
+        & C_{LU} = C_{LD} = C_L = \frac{\epsilon A}{x_0 + x}\\
+        & C_{RU} = C_{RD} = C_R = \frac{\epsilon A}{x_0 - x}\\
+    \end{split}
+\end{align}
+
+Because of the left branch and the right branch have the same circuit design after the CPS capacitors, defining the following parameters will hugely simplify the calculation: 
+
+\begin{align}\label{eq: parameters of transfer function 2}
+    \begin{split}
+        & C_3 = C_4 = C_5 = C_6 = C_c\\
+        & C_7 = C_8 = C_9 = C_{10} = C_s\\
+        & C_{11} = C_{12} = C_g\\
+        & R_1 = R_2 = R\\
+        & R_{Lr} = R_{Rr} = R_\infty = \infty
+    \end{split}
+\end{align}
+
+The current flowing through two cables capacitors on the left branch is $I_{LC}$ and through $C_7$ and $C_8$ is $I_{LO}$. 
+
+
+\begin{align}\label{eq: parameters of transfer function 3}
+    \begin{split}
+        & I_{LC}= sC_c(V_L - V_{LC})= \frac{1}{2} \frac{V_{LC}}{R_r}\\
+        & I_{LO} = sC_s(V_L - V_{LO}) = \frac{1}{2} (sC_g + \frac{1}{R})V_{LO}\\
+    \end{split}
+\end{align}
+
+
+On the right branch, $I_{RC}$ flows through $C_5$ and $C_6$, $I_{LO}$ flows through $C_7$ and $C_8$. 
+
+\begin{align}\label{eq: parameters of transfer function 3}
+    \begin{split}
+        & I_{RC}= sC_c(V_R - V_{RC}) = \frac{1}{2} \frac{V_{RC}}{R_r}\\
+        & I_{RO} = sC_s(V_R - V_{RO}) =  \frac{1}{2} (sC_g + \frac{1}{R})V_{RO}
+    \end{split}
+\end{align}
+
+
+ The relationship of the voltage after cables and the output is: 
+
+\begin{align}\label{eq: calculation 1}
+\begin{split}
+V_L & = \frac{1+2sR_r C_c}{2sR_rC_c} V_{LC} = \frac{1+sRC_g + 2sRC_s}{2sRC_s} V_{LO}\\
+V_R & = \frac{1+2sR_r C_c}{2sR_rC_c} V_{RC} = \frac{1+sRC_g + 2sRC_s}{2sRC_s} V_{RO}\\
+\end{split}
+\end{align}
+
+Thus we have $V_{LO} = A V_{LC}$ and $V_{RO} = A_{LR} V_{RO}$, in which:
+
+\begin{align}\label{eq: A}
+\begin{split}
+    A_{LR} & = \left(\frac{1+2sR_r C_c}{2sR_rC_c}\right)\div\left(\frac{1+sRC_g + 2sRC_s}{2sRC_s}\right)\\
+    & = \frac{ R C_s + 2s R_r R C_c C_s}{R_r C_c + s RR_r C_g C_c +  2s R R_r C_s C_c} \\
+    & \approx \frac{ 2sR C_c C_s}{C_c + 2s RC_g C_c +  2s R C_s C_c}\\
+    & = \frac{ 2sR C_s}{1 + s RC_g +  2s R C_s }
+\end{split}
+\end{align}
+
+The approximation is achieved because of $R_r \rightarrow \infty$, so here we already can see the transfer function is unrelated to the cables $C_c$. Define the current goes into the left branch and right branch are $I_L$ and $I_R$ respectably:
+
+\begin{align}\label{eq: parameters of transfer function 4}
+    \begin{split}
+        I_L & = 2sC_L (V_1-V_L) \\ 
+        &= 2(I_{LC}+I_{LO})\\
+        I_R & = 2sC_R (V_1-V_R)\\ 
+        & = 2(I_{RC}+I_{RO})
+    \end{split}
+\end{align}
+
+Find the relationship of $V_{LC}$ to $V_1$:
+
+\begin{align}
+\begin{split}
+V_1 & = V_L + (I_{LC}+I_{LO}) \frac{1}{sC_L}\\
+    & = \frac{1+2sR_r C_c}{2sR_rC_c} V_{LC} + \frac{1}{2sC_L} \left(  \frac{1}{R_r} + \frac{A_{LR}}{R}+ sAC_g\right)V_{LC}\\ 
+    & \approx \left[1+\frac{A_{LR}}{2sC_L}\left(\frac{1}{R}+sC_g\right)\right]V_{LC}\\
+    & = \left( 1 + \frac{i}{2sC_L}\right)V_{LC}\\
+    & = B_{L} V_{LC}\\
+\end{split}
+\end{align}
+
+in which define $i =A_{LR}\left(\frac{1}{R} + sC_g\right)$ for simplicity. Due to the symmetry:
+
+
+\begin{align}
+\begin{split}
+V_1 & = \left( 1 + \frac{i}{2sC_R}\right)V_{RC}\\
+    & = B_{R} V_{RC}\\    
+\end{split}
+\end{align}
+
+and $B_L V_{LC} = B_R V_{RC}$. Now find the relationship for $V_{LC}$ and $V_{RC}$ to the source, from the left branch: 
+
+\begin{align}
+\begin{split}
+V_0 & = V_1 + V_1 \frac{C_2}{C_1} + (I_L + I_R) \frac{1}{sC_1}\\
+    & = B_{L}  V_{LC} + \frac{C_2}{C_1} B_{L}  V_{LC} + \frac{i}{sC_1} \left( V_{LC}  +V_{RC} \right)  \\
+    & = \left[ B_{L} + \frac{C_2}{C_1} B_{L} + \frac{i}{sC_1}  \left(1+\frac{B_L}{B_R}\right)  \right] V_{LC}\\
+    & = D_{L} V_{LC}\\
+    & = D_{R} V_{RC}
+\end{split}
+\end{align}
+
+In summary, the constant parameters $A$ and $i$ are:
+
+\begin{align}
+\begin{split}
+    A_{LR} & =  \frac{ 2sR C_s}{1 + s RC_g +  2s R C_s }\\
+    i & = A_{LR}\left(\frac{1}{R} + sC_g\right)\\
+\end{split}
+\end{align}
+
+and the parameters that are dependent to the displacement $x$ are:
+
+\begin{align}
+\begin{split}
+    B_L & = \left( 1 + \frac{i}{2sC_L}\right)\\
+    B_R & = \left( 1 + \frac{i}{2sC_R}\right) \\ 
+    D_L &= \left[ B_{L} + \frac{C_2}{C_1} B_{L} + \frac{i}{sC_1}  \left(1+\frac{B_L}{B_R}\right)  \right]\\
+    D_R &= \left[ B_{R} + \frac{C_2}{C_1} B_{R} + \frac{i}{sC_1}  \left(1+\frac{B_R}{B_L}\right)  \right]
+\end{split}
+\end{align}
+
+Finally, we derive the transfer function from the input signal $V_0$ to the output signal $V_{LO}$ and $V_{RO}$ for two branches. 
+
+\begin{align}
+    \begin{split}
+        \frac{V_{LO}(x)}{V_0} & = A_{LR} D_L(x)\\
+        \frac{V_{RO}(x)}{V_0} & = A_{LR} D_R(x)
+    \end{split}
+\end{align}
+
+
+
+Treating the amplifiers and differential amplifiers in the schematic as ideal components, which provide a 50-fold amplification after $V_{LO}$ and $V_{RO}$, the final output for the CPS system $V_\text{CPS}$ after demodulation in the RTPC can be expressed as:
+
+\begin{align}\label{eq: final transfer function}
+\begin{split}
+    V_\text{CPS} &=50 \times A|V_0|\left( D_L(x) - D_R(x)\right)\\
+                & = 50 \times 4.2 \times A\left( D_L(x) - D_R(x)\right) [\text{V}]
+\end{split}
+\end{align}
+
+
+
+In the electronic setup, there are some components that their impedances differ with the surrounding and are unclear, such as $C_1, C_2$ and cable capacitance $C_c$:
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{l l} % Three columns: left, center, right aligned
+    \toprule
+    \toprule
+    Capacitor & Description \\ 
+    \midrule
+    $C_1$  & Capacitance between the input electrode and testmass \\
+    $C_2$  & Stray capacitance between the end mass and its surrounding  \\
+    $C_c$ & Capacitance between the output coaxial cables and the guard\\
+    \bottomrule
+    \bottomrule
+    \end{tabular}
+    \captionsetup{width=0.8\linewidth} 
+    \caption{The capacitors with non-fixed impedance and their descriptions are listed below. Their influence on the transfer function is discussed in the following sections.}
+    \label{tab: free parameters}
+\end{table}
+
+
+
+The relationship between the voltage and the displacement, $x = G(x) V_{\text{CPS}}$, is shown in Figure \ref{fig:transfer-function-variables}, along with the analysis with different values of $C_1, C_2$ and $C_c$. The curve shows a one-to-one map correspondence between the voltage output and the displacement, confirming out CPS design can effectively measure the position of the end mass. The gain $G(x)$ increases when $C_1$ is smaller or $C_2$ is larger capacitance, while it remains unaffected by the cable capacitance $C_c$. 
+
+
+ 
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2.5cm}{-2.5cm}
+    \includegraphics[width=\linewidth]{figure/Chap3_variables and transfer function.png}
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Analysis of the impact of different $C_1$, $C_2$, and $C_c$ values on the transfer function.}
+    \label{fig:transfer-function-variables}
+\end{figure}
+
+
+
+In the experimental setup, $C_1$ is represented by attaching a 12\,pF capacitor to the end mass cube, leaving $C_2$ as the only variable component influencing the analytical value of gain. For the following simulation and measurement, $C_1$ is assumed to be fixed at 12\,pF. In the OmniSens configuration, $C_1$ is be determined by the injection electrode area and its distance from the reference mass. Due to geometrical reasons and the safety margin in the plate separation, $C_1$ is unlikely have a capacity larger than 12\,pF.
+
+A polynomial cubic fit can provide good approximation for the CPS' behaviour, as shown in Figure \ref{fig: cubic fit for C2} of the transfer function. As $C_2$ increases, the gain gets higher. In the setup of $C_2 = 60$\,pF, 80\,pF and 100\,pF, the corresponding fit for transfer functions are: 
+
+\begin{adjustwidth}{-0cm}{-0cm}
+    \begin{align}
+    \begin{split}
+        & C_2 = 100\,\text{pF}:x\,[\upmu \text{m}] = 110.211\,[\upmu \text{m}]V_\text{CPS}\,[\text{V}] - 0.224 [\upmu \text{m}/\text{V}^3]V^3_\text{CPS}[\text{V}]^3\\
+        & C_2 = 80\,\text{pF}:x\,[\upmu \text{m}] = 91.844\,[\upmu \text{m}]V_\text{CPS}[\text{V}] - 0.128 [\upmu \text{m}/\text{V}^3]V^3_\text{CPS}[\text{V}]^3\\
+        & C_2 = 60\,\text{pF}:x\,[\upmu \text{m}] = 73.473\,[\upmu \text{m}]V_\text{CPS}[\text{V}] - 0.065 [\upmu \text{m}/\text{V}^3]V^3_\text{CPS}[\text{V}]^3\\
+    \end{split}
+    \end{align}
+\end{adjustwidth}
+
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_cubit_fit_C2.png}
+    \caption{The cubic fits of the transfer function for different $C_2$ values. }
+    \label{fig: cubic fit for C2}
+\end{figure}
+
+
+Using the circuit schematic in Figure \ref{fig: simulation}.a), the transfer function was simulated by \textit{LTspice} and compared with the analytical results plotted in Figure \ref{fig: simulation}.b). Considering the electronic components are not ideal in the simulation and will introduce the loss of the signal, the simulation and analytical model highly agree with each other.
+
+\begin{figure}[!hbt]
+    \centering
+    \begin{adjustwidth}{-2.5cm}{-2.5cm} 
+    \centering
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figure/Chap3_electronics_design.jpg}
+        \caption*{\textbf{a)}} % label at bottom-left
+    \end{subfigure}
+    \end{adjustwidth}
+    
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width = 0.8\linewidth]{figure/Chap3_sim_ana.png}
+        \caption*{\textbf{b)}} % label at bottom-left
+    \end{subfigure}
+
+    \captionsetup{width=0.8\linewidth}
+    \caption{\textbf{a)} The circuit schematic of the CPS in \textit{LTspice}. \textbf{b)} The comparison of simulation and analytical calculation, with $C_2$ being a variable. A cubic fit is performed on the analytical transfer function with $C_2$ = 60\,pF. The gain from the simulation is higher than the one fro the analytical calculation, showing how the noise from the electronics components influence the transfer function.}
+    \label{fig: simulation}
+\end{figure}
+
+For a small displacement of the end mass around the centre, good linearity of the transfer function is preserved. This also benefits the modelling of the electrostatic driver, which shares the CPS electrodes with its control force is non-linearly coupled to the gap between the electrodes plane and the end mass.
+
+
+
+
+ 
+
+
+
+\subsubsection{Upgrades of the Setup}\label{sec: measurement}
+
+
+The gain of the CPS was first roughly estimated by moving the end mass horizontally with the micrometric cart. When a translation displacement $\delta x$ was measured by the micrometric screw, the output voltage obtained a voltage change $\delta V$ read from \textit{dataDisplay} \cite{dataDisplay}, which is a data processing and visualizing software developed for the Virgo experiment, under the translation $\delta x$ which was read from the micrometric screw. The gain was calculated as $\delta x/\delta V$, with particular focus on the region near the centre position of the end mass. 
+
+
+
+\begin{figure}[!htb]
+
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width = 0.8 \linewidth]{figure/Chap3_noise_measure_setup.png}
+        \caption*{\textbf{a)}}
+    \end{subfigure}
+    
+    \begin{adjustwidth}{-2.5cm}{-2.5cm}
+    \centering
+    \begin{subfigure}{\linewidth}
+    \includegraphics[width=\linewidth]{figure/Chap3_working flow.png}
+    \caption*{\textbf{b)}}
+    \end{subfigure}
+    \end{adjustwidth}
+    
+    \captionsetup{width=0.8\linewidth}
+    \caption{\textbf{a)} Setup of the end mass system during the noise testing and upgrade phase. Two cable configurations are shown: 5\,m cables without braid (green circle) and 10\,m braided cables (yellow circle). \textbf{b)} The CPS optimization process, including the action taken, setups, timeline, the name for the stored data, and the gain measured with micrometric screw around the centre position. The noise spectrum for different setups are shown in Figure \ref{fig: CPS HoQIs noise}.  }
+    \label{fig: work}
+\end{figure}
+
+To optimize setup for lower noise and a stable gain that is independent of the output cabling, we added an additional braid around the five 10\,m cables in the original setup to suppress the noise from the environment also to ground the cable, and electronics board was equipped with extra buffers for compensating the signal loss introduced by the braid. A set of 5\,m  cables without additional external braid was used to replace the output cables, allowing a comparison of the output performance with different cabling. The overall development process of the CPS is summarized in Figure \ref{fig: work}.
+
+
+Noise spectrum was investigated in two ways. For a short test in the lab, we examined the power spectrum of \texttt{CPS\_1\_H\_RAW} from \textit{dataDisplay}. For a throughout test of the noise floor, we collected 7 hours of data from the \texttt{CPS\_1\_H\_DEMOD\_i} channel of a static CPS in air overnight, and processed this power spectrum with the correspondence gains to obtain the displacement noise spectrum. Five different setups were tested in the second way: 
+
+\begin{enumerate}
+    \item 10\,m cables without braid, using old board. 
+    \item 10\,m cables with braid, using old board.
+    \item 5\,m cables without braid, using old board.
+    \item 10\,m cables with braid, using the upgraded board. 
+    \item 5\,m cables without braid, using upgraded board. 
+\end{enumerate}
+
+Situation 4. and 5. will be the ultimate setup options for the CPS, as gain stability is a necessity. Figure \ref{fig: CPS HoQIs noise} compares the noise spectra from different setups. The following conclusions can be drawn:
+
+\begin{itemize}
+    \item When using the same electronics board (setups in 1., 2. and 3., and setups in 4. and 5.) shorter cables produced lower noise.
+    \item For setups using 10\,m cables (setups 1., 2. and 4.) adding a braid reduced the environmental noise. However, updating of the board traded this benefit away, resulting into the highest noise floor among all the setups.
+    \item Upgrading the electronics board (setup 1. and 3., and setup 2. and 5.) introduced additional noise. This effect was more significant for 10\,m cables with braid than for 5\,m cables without braid.
+\end{itemize}
+
+
+Future optimization can explore potential coupling between the board upgrade and braiding the cabling, such as by adding braid to the 5\,m cables. So far, setup 5. with 5\,m cables and upgraded board shows the best performance, thus is adopted for the following measurements in Section \ref{sec: CPS performance} and Chapter \ref{chap: results}.
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2cm}{-2cm}
+    \includegraphics[width=\linewidth]{figure/Chap3_CPS_preliminary test.png}
+    \end{adjustwidth}
+    \captionsetup{width=0.8\linewidth}
+    \caption{The displacement noise spectrum and the rms of the noise for five CPS setups. The code of this plot can be found in Appendix \ref{appendix}.}
+    \label{fig: CPS HoQIs noise}
+\end{figure}
+
+
+
+
+% =========== Chap3 Sec1.3 Offset analysis ===========
+
+\subsubsection{Performance Test of the CPS}\label{sec: CPS performance}
+
+In the coordination of the sensing frame, the CPS is used to find the centre position, labelled as $(x_{\text{H}0}, x_{\text{V}0})$ as shown in Figure \ref{fig: CPS offset}. This position is calibrated when the end mass is located at $(x_{\text{Hs}}, x_{\text{Vs}})$, where the CPS readout is zero in both horizontal and vertical directions. 
+
+
+\begin{figure}[!htb]
+    \includegraphics[width=0.4\linewidth]{figure/Chap3_CPS_offset.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{The coordination system within the sensing frame. $(x_{\text{H}0}, x_{\text{V}0})$ representing the geometric centre of the end mass system, $(x_{\text{H}0}, x_{\text{V}0})$ is the location where the CPS readout $V_\text{CPS}$ is zero in both horizontal and vertical directions.}
+    \label{fig: CPS offset}
+\end{figure}
+
+Ideally, the geometric centre $(x_{\text{H}0}, x_{\text{V}0})$ and the sensing centre $(x_{\text{Hs}}, x_{\text{Vs}})$ are overlapped as the same point. However, a small offset might exist, due to manufacture mismatch from the design, or gain differences in the amplifying board. To evaluate this small offset, the sensing centre is determined as the point where the transfer function of voltage to the displacement has the maximum gradient. This is due to the symmetric property of the transfer function, as calculated in \ref{eq: final transfer function}. 
+
+The cubic fit for the CPS transfer function, calibrated using HoQIs after discarding edge data and scanning from right to left, is: 
+
+\begin{align}
+\begin{split}
+        x\,[\text{$\upmu$m}] = & - 0.214\,[\text{$\upmu$m/V$^3$}] \, V^3_\text{CPS}\, [\text{V}^3] + 0.032\,[\text{$\upmu$m/V$^2$}] \, V^2_\text{CPS}\, \\ 
+        & + 92.618\,[\text{$\upmu$m/V}] \, V_\text{CPS}\, [\text{V}]
+\end{split}
+\end{align}
+
+in which the readout of HoQI is calibrated to have $x = 0\,\upmu\text{m}$ when $V_\text{CPS}=0\,\text{V}$. The extra second order term in the cubic fit indicates that the biggest gradient point wouldn't lie on the $V_\text{CPS}=0\,\text{V}$ axis. $\delta x/\delta V_\text{CPS}$ reaches its maximum at $V_\text{CPS} = 0.033$\,V, resulting in an offset of 3.05\,$\upmu$m shown in Figure \ref{fig: offset plot}, which is negligible for calibrating the centre position.               
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_offset_plot.png}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{Calibration of the CPS using HoQI, with the end mass scanned from right to left. A cubic fit is applied to determine the point of maximum gradient, with its geometric centre $x_{\text{H0}}$ marked by the green cross on the curve. The sensing centre when $V_\text{CPS}=0$\,V is marked by the black cross. }
+    \label{fig: offset plot}
+\end{figure}
+
+
+Thus, comparing the result from the analytical model, simulation and one measurement using HoQIs in Chapter \ref{chap: results}. The performance of the CPS from analytical model, simulation and the measurement using HoQIs agree well with each other, within a small uncertainty of capacitance of $C_2$, see Figure \ref{fig: align well}. 
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_aligned_well.png}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{The comparison of the analytical model and the simulation for $C_2$ = 60\,pF and $C_2$ = 80\,pF, along with the measurement using HoQIs scanning from right to left. Curves with the same colour representing the result using the same $C_2$ capacitance. In this plot, the best approximation from the analytical model is $C_2$ = 80\,pF , and from simulation is $C_2$ = 60\,pF. }
+    \label{fig: align well}
+\end{figure}
+
+Together with the noise analysis in Figure \ref{fig: CPS HoQIs noise} and the independence from output cabling, we conclude that the CPS developed in this work is a functional, reliable, and low noise wideband sensor with predictable performance.
+
+
+
+% ============ Chap3 Sec2 HoQIs ===========
+
+\subsection{The Homodyne Quadrature Interferometer (HoQI)}
+
+
+HoQI is a compact homodyne quadrature interferometer that provides low noise and high dynamic range in displacement sensing, and is used for calibrating the CPS and testing the collaboration of CPS-HoQI sensing system. The sensitivity of HoQI surpasses all of the currently displacement sensors employed on gravitational waves detectors \cite{cooper_compact_2018}. It is a Mach-Zehnder interferometer with three photodiodes (PDs), enabling simultaneous measurement of both quadratures. From the optical layout illustrated in Figure \ref{fig: hoqi schematic}, the optical power at the photodiodes are: 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap3_HoQI_schematic.pdf}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{The layout shows the locations of the optical components, as well as the direction and polarization of the laser beam. The HoQIs assembly base plate is pale green block. A collimated beam is injected into a polarising beamsplitter (PBS), producing a linearized laser beam. The reflected beam from a non-polarising beamsplitter (NPBS) is later split into two paths: the reference arm L$_1$ within the HoQI frame, and the test arm L$_2$ with one retro reflector mounted on the end mass cube. After the polarization is modified by a half waveplate ($\lambda/2$) and a quarter waveplate ($\lambda/4$), the interfered beam is directed to the three photodiodes (PDs). } 
+ \label{fig: hoqi schematic}
+\end{figure}
+
+
+\begin{align}
+    \begin{split}
+        & P_\text{PD1} = \frac{P_{\text{in}}}{8}\left(1+a\sin (\phi)\right)\\
+        & P_\text{PD2} = \frac{P_{\text{in}}}{8}(1-a\cos (\phi))\\
+        & P_\text{PD3} = \frac{P_{\text{in}}}{8}(1+a\cos(\phi))
+    \end{split}
+\end{align}
+
+where $P_\text{in}$ is the input power from the collimated beam, $\phi = \frac{4\pi}{\lambda}(L_1-L_2)$ shows phase mismatch due to the difference length of the light path from two arms, and $a$ is the fringe visibility. Thus, the quadrature information of the interference is: 
+
+
+\begin{align}\label{eq: HoQI X and Y}
+    \begin{split}
+        & Y \propto P_\text{PD1} - P_\text{PD2} = \frac{\sqrt{2}aP_{\text{in}}}{8}\sin \left(\phi+\frac{\pi}{4}\right)\\
+        & X \propto P_\text{PD1} - P_\text{PD3} = \frac{\sqrt{2}aP_{\text{in}}}{8}\sin \left(\phi-\frac{\pi}{4}\right)\\
+        & \arctan\left(\frac{Y}{X}\right) \propto \phi = \frac{4\pi}{\lambda}(L_1-L_2)
+    \end{split}
+\end{align}
+
+In this experiment we assembled and calibrated some HoQIs for the full future operation of OmniSens. To prepare a HoQI, the optical components were either glued or screwed onto the base plate. The collimator was adjusted to ensure reflected beams from two arms overlap around the centre of PDs. Once aligned, HoQI was mounted on the end mass sensing frame, as shown in the front view in Figure \ref{fig: lab setup}. a). Two cams allowed HoQI to move freely along the two-dimensional frame surface of the frame to maximize the fringe visibility on PDs. 
+
+In this experiment, the fringe visibility of PD1, which corresponds to the $\sin$ signal, was suppressed probably due to the scattered light reflecting from the base plate structure. An ellipse fitting was performed to eliminate the non-linear effects in the $X$ and $Y$ signal defined in \ref{eq: HoQI X and Y}. Figure \ref{fig: Lissajous pattern} presents the unwrapped Lissajous figure of $X$ and $Y$ when the end mass cube moves at a speed below $ v_\text{max} = \lambda f_\text{sampling}/8 \approx 25$\,mm/s.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/Chap3_HoQIs_fringe_counting.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Unwrapped Lissajous figure of $X$ and $Y$ with the test arm mirror slowly moving. $X$-$Y$ plane represents the phase space. A good ellipse fitting calibrates $(X,Y)$ to lie on a circle centred at $(0,0)$, with $\arctan(Y/X) \propto (L_1 -L_2)$. Using the unwrapping algorithm, $L_1 - L_2$ can be continuously tracked through fringe counting. When $(X_{i},Y_{i})$ and $(X_{i+1},Y_{i+1})$ are sitting on the adjacent fringes and have the same projection on the $X$-$Y$ plane, the test arm mirror travels for a distance of $\lambda/2$.  }
+    \label{fig: Lissajous pattern}
+\end{figure}
+
+
+From the static in-vacuum test of the upgraded HoQIs, a peak sensitivity of $2.5\times10^{-14}$\,m/$\sqrt{\text{Hz}}$ at 100\,Hz, and $2.3\times10^{-12}$\,m/$\sqrt{\text{Hz}}$ at 10\,mHz was achieved \cite{Alex_thesis}.
+
+
+
+
+
+\newpage
+
+
+% ============== Chap4 Results ==========
+
+\section{Results}\label{chap: results}
+
+
+The experimental work in this master's project aims to validate strategy of using the CPS and HoQI to find the absolute position of the end mass within the sensing frame, as described in Section \ref{sec: Control and Sensing}.
+
+
+The CPS–HoQI sensing scheme was tested in a round-trip across the full horizontal dynamic range of the end mass. CPS was calibrated using HoQI with higher resolution, and cubic fittings were determined. This chapter analyzes the scanning data to identify functional conditions and potential malfunction mechanisms. The benefit of such a displacement sensing system and indications for future OmniSens operation are discussed. 
+
+
+
+% =========== Chap4 Sec1 combo test ========
+\subsection{Calibrating the CPS with HoQI}\label{Sec: calibrating the CPS with HoQI}
+
+Two one-to-one relationships between the horizontal CPS and HoQI readouts were obtained  by a step moving approach in a round-trip scan across the full horizontal dynamic in 3660\,s. The micrometric screw firstly moved the end mass from the left end to the right end in the first 680\,s, then the end mass was positioned around the centre, finally starting from 2580\,s, the end mass scanned from the right end to the left end. Each step spanning around 0.1\,mm and staying for 45\,s, as demonstrated in Figure \ref{fig: scanning movement}.
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2cm}{-2cm}
+    \begin{subfigure}{0.47\linewidth}
+        \includegraphics[width=\linewidth]{figure/Chap4_Cubic_Fitting.png}
+        \caption*{\textbf{a)}}
+    \end{subfigure}
+    \begin{subfigure}{0.47\linewidth}
+        \includegraphics[width = \linewidth]{figure/Chap4_Cubic_Fitting_offset.png}
+        \caption*{\textbf{b)}}
+    \end{subfigure}
+    \end{adjustwidth}
+
+    \captionsetup{width = 0.8\linewidth}
+    \caption{\textbf{a)} The scanning readout for two directions and their cubic fits, truncated the data around limited position of the end mass. \textbf{b)} Measurements and cubic fits with offset correction.} 
+    \label{fig: measurement and fitting}
+\end{figure}
+
+
+After discarding the edge data to exclude short cut behaviour, a cubic fit was applied to the scanning result. Figure \ref{fig: measurement and fitting}.a) shows the measurement and the fitting in CPS calibration. The cubic fitted the transfer functions are: 
+
+\begin{adjustwidth}{-2cm}{-2cm} 
+\begin{align*}
+\begin{split}
+        \text{Left to right: } x\,[\text{$\upmu$m}] =&  - 0.217\,[\text{$\upmu$m$ $/V$^3$}] \, V^3_\text{CPS}\, [\text{V}^3] + 0.038\,[\text{$\upmu$m/V$^2$}] \, V^2_\text{CPS}\, \\ 
+         & + 92.745\,[\text{$\upmu$m/V}] \, V_\text{CPS}\, [\text{V}] + 119.397\,[\text{$\upmu$m}]\\
+         \text{Left to right: } x\,[\text{$\upmu$m}]  =&  - 0.214\,[\text{$\upmu$m$ $/V$^3$}] \, V^3_\text{CPS}\, [\text{V}^3] + 0.032\,[\text{$\upmu$m/V$^2$}] \, V^2_\text{CPS}\, \\ 
+         & + 92.618\,[\text{$\upmu$m/V}] \, V_\text{CPS}\, [\text{V}] + 17.305\,[\text{$\upmu$m}]\\
+\end{split}
+\end{align*}
+\end{adjustwidth}
+
+The fitted transfer functions show that between the two scanning processes the offset between the HoQI and the CPS data differs by 0.112\,mm. From Figure \ref{fig: measurement and fitting}.b), after the offset correction and calibrated the HoQI's readout as $x = 0$\,mm when $V_\text{CPS}=0$\,V, two measurements curves and their cubic fits overlap with each other. Since the CPS is an absolute sensor with transfer function only related to the mechanical and electronical setups which weren't changed during the scanning process, whereas HoQI can only be sensitive to the relative displacement, we firstly assumed the 0.112\,mm offset was mainly coming from a shift in HoQI's readout.
+
+
+
+
+\subsection{Offset Analysis}\label{sec: offset analysis}
+
+
+Using the same cubic fit, the whole scanning process is reproduced in Figure \ref{fig: scanning movement}, with the cubic fit for the CPS and an offset correction for HoQI. The readout from two sensors matched each other except for operating near the edge of the moving range which can be located the short cut behaviour. From the $X$ and $Y$ channel plot, we see the fringe visibility maintained at the same level for the most of the time. 
+
+\begin{figure}[!htb]
+\begin{adjustwidth}{-1cm}{-1cm} 
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap4_scanning_whole_movement.png}
+\end{adjustwidth}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{The round-tour scanning experiment in time domain. On the top illustrates the movement and the location of the end mass along with time. Cubic fitted CPS data and the HoQI data after offset calibration are shown together with there accumulated discrepancy. At the bottom shows the $X$ and $Y$ channel representing the $\sin$ and $\cos$ signal of the interfered light.}
+    \label{fig: scanning movement}
+\end{figure}
+
+From the accumulated offset during scanning (middle plot in Figure \ref{fig: scanning movement}), a net offset of 0.112\,mm appeared when the end mass was at the right edge (500–1000\,s). This discrepancy cancelled out when the end mass moved to the right edge and returned (2250–2570\,s).
+
+In time intervals where CPS and HoQI recorded identical displacements, the sensing system performed exactly as we expected, validating the effectiveness of the CPS-HoQI sensing scheme. For example between 60.90\,s and 61.10\,s in Figure \ref{fig: scanning 60s}, the CPS and HoQI readouts overlapped. HoQI's curve appeared to be much smoother due to its lower noise floor, whereas the CPS traced more fluctuations. The $\sin$ and $\cos$ signal, along with the Lissajous pattern, were all continuos and smooth, confirming that no fringe slipping occurred in this duration.
+
+\begin{figure}
+\begin{adjustwidth}{-2cm}{-2cm}
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap4_Scanning_60s.png}
+\end{adjustwidth}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{CPS and HoQI readouts comparison and the Lissajous pattern between 60.90\,s and 61.10\,s.}
+    \label{fig: scanning 60s}
+\end{figure}
+
+On the contrary, the measurement between 846.50\,s and 847.00\,s in Figure \ref{fig: scanning 846s} captured the very 0.1\,mm offset of the HoQI with a clear fringe slipping behaviour. The moving speed of the end mass during this time was 3\,mm/s which is slower than the maximum speed, ruling out the possibility of down sampling. The phase and the fringe counting were lost during a time period that was longer than offset was accumulating, indicating a possible temporary loss of the interference.
+
+
+\begin{figure}
+\begin{adjustwidth}{-2cm}{-2cm}
+    \centering
+    \includegraphics[width=\linewidth]{figure/Chap4_Scanning_846s.png}
+\end{adjustwidth}
+    \captionsetup{width = 0.8\linewidth}
+    \caption{CPS and HoQI readouts comparison and the Lissajous pattern between 846.50\,s and 847.00\,s. }
+    \label{fig: scanning 846s}
+\end{figure}
+
+Another information can be derived from Figure \ref{fig: scanning movement}. The CPS readout implied an entire sensing range of 1.35\,mm with the cubic fit, whereas HoQI readout covered up to 1.46\,mm, and the micrometric screw measurement recorded 1.48\,mm in Table \ref{tab: parameters}. Given a stable input power, HoQI can only record displacements smaller than the actual travel distance in a single-direction movement. This implies that the cubic fit of the CPS reproduces a range smaller than the true dynamic range. As discussed in Section \ref{sec: CPS performance}, the analytical model, simulation, and measurements agree well within the region excluding the moving edge. It is therefore natural to examine the CPS behaviour when the circuit approaches a short-circuit condition. For this purpose, the time interval from 2584\,s to 3564\,s is selected for further analysis.
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustwidth}{-2cm}{-2cm}
+    \begin{subfigure}{ \linewidth}
+    \centering
+        \includegraphics[width = 0.47\linewidth]{figure/Chap4_Right_Left.png}
+        \hfill
+        \includegraphics[width = 0.47\linewidth]{figure/Chap4_short_cut.png}
+        \caption*{\textbf{a)}}
+    \end{subfigure}        
+    \end{adjustwidth}
+
+    \begin{subfigure}{ \linewidth}
+        \centering
+        \includegraphics[width = 0.80\linewidth]{figure/Chap4_difference.png}
+        \caption*{\textbf{b)}}
+    \end{subfigure}
+    \caption{\textbf{a)} A comparison of the HoQI readout and the cubic fitted CPS readout. \textbf{b)} The difference between the HoQI readout and the cubic fitted CPS readout at different CPS readout.  }
+    \label{fig: short cut analysis}
+\end{figure}
+
+Figure \ref{fig: short cut analysis} compares the original cubic fit with the calibration data from HoQI. While the cubic fit aligned well with the measurement overall, at the near short-circuit position the same displacement produced a smaller change in measured voltage than predicted by the fit. This indicates that the actual gain of the transfer function is higher than that of the fitted model as the end mass approaches the edge, and that the cubic fit no longer accurately represents the CPS voltage-to-position transfer function in this region.
+
+As discussed in Section \ref{sec: analytical and simulation}, the stray capacitance $C_2$ influences the transfer function such that an increase in $C_2$ leads to a higher gain. When the end mass moved toward the metal stop on one side, $C_2$ may effectively increas due to the distance to the sensing frame got smaller, resulting in a higher gain than if $C_2$ was assumed to be a constant. This hypothesis also explains why during the period from 2380 s to 2600 s, the end mass travelled to the right edge and returned without any accumulated offset.
+
+
+
+
+\newpage 
+
+
+
+\section{Conclusion}
+
+In this master's thesis, a Capacity Position Sensor (CPS) tailored for OmniSens was designed and constructed from scratch. The analytical model, electronic simulations, and the experimental measurements of the CPS agree well with each other. Functional testing demonstrates that the CPS is a reliable sensor, with a stable response to the position independent of the cabling. The optimized setup achieves a noise floor of $7\times 10^{-8}$\,m/$\sqrt{\text{Hz}}$ at 0.1\,Hz.
+
+A one-dimensional translation test of the end mass position sensing system, a combination from the CPS and HoQI, confirms that the CPS is effective for locating the centre position, while the HoQIs significantly enhance displacement sensitivity. As long as HoQIs guarantee to provide a precise inertial movement measurement of the active platform, the CPS-HoQI combination can enable maintaining OmniSens to the designed working position through a robust control scheme. This also enables OmniSens to establish and hold a new working point when necessary, for example, if a change in buoyancy disrupts the balance of the reference mass and a new equilibrium must be found.
+
+
+Potential malfunction scenarios were also identified, such as the offsets discussed in Section \ref{sec: offset analysis}. Offsets are not the primary concern, as the design of OmniSens ensures a small dynamic range around the centre position. All observed offsets during scanning occurred near the travel limits. The CPS-HoQI sensing system can resolve such anomalies effectively: the CPS, as an absolute position sensor, can be used to verify fringe slipping of HoQI, while the low coupling of HoQI to the surrounding structure can help with commissioning the CPS. 
+
+Future work on the CPS-HoQI end mass position sensing system can explore its performance across more degrees of freedom, including rotation sensing, determining the maximum translation range of the end mass for the HoQI on the perpendicular axis to maintain interference, and measuring the end mass translation along the arm. 
+
+\newpage
+
+
+
+\clearpage
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+\pagestyle{empty} % Applies to all following pages until changed
+
+
+I wish to express my heartfelt gratitude to everyone who has supported me during my master’s studies, knowing that words can never be enough. Without you, I could not have imagined coming this far.
+
+It has been an extraordinary year working with one of the most outstanding teams in gravitational wave research. My supervisor, Conor, and my daily supervisor, Michele, have done an excellent job in guiding me into this field of instrumental research, something that I had no prior knowledge of. Looking back, I am deeply thankful for their patience and dedication in helping me understand concepts that were, at first, completely counter-intuitive. Sometimes it's funny that, while in the shower or biking somewhere, I would suddenly realise the meaning of something they had explained two weeks earlier.
+
+Under their guidance, and with the invaluable help of our beloved electronics technician Tim, Hans and Gino, mechanical engineer Armin, and Dr.Darling Alex, I have had the joy of getting hands-on experience and receiving thorough training in electronics, optics, and engineering within the OmniSens project. Martin, I have heard much about your excellence as a researcher and supervisor; although we have spoken only briefly, I look forward to working with or discussing ideas with you in the future.
+
+The diverse research topics pursued in the Nikhef gravitational-wave group have kept me connected to the broader dynamics of gravitational-wave research and its social and industrial impact. Even in difficult years, I have witnessed the inspiring story of people striving to make the best of their world. Nikhef will forever be my favourite place to imagine myself doing research: a safe, welcoming environment with a vintage charm that reminds me of the golden age of physics in the last century.
+
+I have found family-like support here, which has been one of the greatest factors in my growth. Alina, Yashwant, Emma, Suzanne, and all the noisy Gen Z younglings, you have been my partners in being joyfully crazy without worry. I have loved the atmosphere of having people willing to do something purely for fun (and sometimes, wonderfully, for no good reason at all). I also cherish the vibrant environment and the life-enjoying philosophy of the Mechanical and Electronics Department. Thank you, Daniel, Nico, Ama, and Cynthia, for all the reassuring conversations. Special thanks to Jop, who has supported me for the past three years, sharing both laughter and tears, and helping me find my place in this foreign land and along this new life path.
+
+Words can never fully capture how I feel upon finally making it through. I wish all the best to the people I love, and to the world we care for, even if all I can offer is my faintest effort.
+
+
+
+\flushright
+\textit{寄蜉蝣于天地，渺沧海之一粟。}
+
+\textit{\footnotesize We are like mayflies wandering in this terrestrial world or a grain of millet drifting on a deep ocean.}
+
+\textit{--- 苏轼 《前赤壁赋》}
+
+\textit{\footnotesize --- Su Shi \say{Former Ode on the Red Cliffs}}
+
+
+\flushleft
+\textit{林兆青}
+
+11.08.2025
+
+
+
+\newpage
+\medskip
+
+
+
+
+
+\fancypagestyle{bibstyle}{%
+  \fancyhf{} % clear header and footer
+  \fancyfoot[R]{\thepage} % keep page number at bottom right
+}
+
+\clearpage
+\pagestyle{empty} % apply this style for all following pages
+\printbibliography
+
+\newpage
+
+\appendix
+\section{}\label{appendix}
+\inputminted[breaklines, fontsize=\footnotesize]{python}{for_appendix.txt}
+
+\end{document}
+
+
+
+\subsection{}
+
+
+
+
+To suppress the ground vibrations that propagate to the mirror, the suspension systems of gravitational wave detectors utilize both passive and active vibration isolation techniques. Passive isolation relies on passive techniques, such as mechanical springs and negative-stiffness isolator, to filter out the higher frequency vibrations. Whereas active isolation employs sensing and feedback systems to actively dampen the vibration and keep the proof mass at the designed setpoint.  
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figure/Chap2_inverted_pendulum.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{A simple model for pendulum (left) and inverted pendulum (right).}
+    \label{fig: inverted and pendulum}
+\end{figure}
+
+A simple model of a pendulum and an inverted pendulum is used to illustrate the principles of passive isolation. As shown in Figure \ref{fig: inverted and pendulum}, the pendulum consists of a proof mass with weight $m$, suspended at the end of a rigid, massless rod with length of $L$. In the case of the inverted pendulum, the pivot point is located below the proof mass. The motion of the surface to which the pendulums are attached is denoted by $X_g$ in frequency domain, while the motion of the proof masses is represented by $X_m$. The transfer function for surface vibration propagating through the pendulum around the equilibrium is following: 
+
+\begin{equation}
+    \frac{X_m(f)}{X_g(f)} = \frac{1}{1-(f^2/f^2_0)}
+\end{equation} \label{eq: transfer function pendulum}
+
+in which the resonant frequency of this pendulum is $f_0 = \frac{1}{2\pi}\sqrt{g/L}$. Here we can see the pendulum system acts as a low-pass filter: it transmits motion at frequencies below the $f_0$, amplifies vibrations at the resonant frequency, and them suppressing vibrations above $f_0$ with a decreasing slope $\sim$ $1/f^2$. Two strategies can be applied to further suppress the vibrations: increasing the length of the pendulum to achieve a lower resonant frequency, and using multi-stage pendulums to increase the slope of the attenuation. Figure \ref{fig:transfer function} illustrates how variations of the pendulum design can enhance vibration suppression.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6 \linewidth]{figure/Chap2_Vibration Propagation in Pendulums.png}
+    \captionsetup{width=0.8\linewidth}
+    \caption{The transfer function describes vibration propagation from the base surface to the proof mass. Three cases are shown: (1) a single pendulum with resonant frequency $f_0=1$Hz; (2) a double pendulum formed by attaching an identical pendulum to the proof mass; and (3) a single pendulum a single pendulum with 100 times the original length, resulting in a resonant frequency $f_{100L} = f_0/10.$ }
+    \label{fig:transfer function}
+\end{figure}
+
+Combining the inverted pendulum with the pendulum can help with lowering the resonant frequency. Shown in Figure \ref{fig: inverted and pendulum}, a pendulum with length $L_{CM}$ and counterweight with mass $m_{CM}$ is added to an inverted pendulum with length $L$ and a mass $m$ on the end. We can write the the transfer function of the centre of mass $X_c$ for this system as: 
+
+\begin{align}
+    \begin{split}
+        \frac{X_c}{X_g} &= \frac{1}{1 - \frac{mL - m_{CM}L_{CM}}{(m+m_{CW})g}\omega^2}\\
+    \end{split}
+\end{align}
+
+
+My dynamics is wrong.
+
+
+
+Thus the resonant frequency for this system: 
+
+\begin{align}
+    \begin{split}
+        f = \frac{1}{2\pi}\sqrt{\frac{(m+m_{CW})g}{mL - m_{CM}L_{CM}}}
+    \end{split}
+\end{align}
+
+
+
+Active vibration isolation optimizes the combination of closed-loop and open-loop methods to attenuate disturbances with minimal noise. In a simple closed-loop system Figure \ref{fig: closed loop} ,sensors ($S$) and controller ($H$) are added to the system dynamics ($G$), providing a stronger attenuation. However, this also introduces unfavourable sensor noises ($N_s$), control noises ($N_a$) which can couple into the system, and, in some cases, exceed the vibrations we want to suppress. For a given ground movement $X$ at frequency $s$, the movement propagates to the mirror $Y$ is:
+
+
+
+\begin{equation}
+    Y(s) = \frac{G}{1+GH}X(s) - \frac{G}{1+GH}N_H(s) - \frac{GH}{1+GH}N_s(s)
+\end{equation}
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width= 0.8 \linewidth]{figure/Chap2_close_control_loop.pdf}
+    \captionsetup{width=0.8\linewidth}
+    \caption{Simple diagram of a closed control loop that shows the propagation of ground movement $X(s)$ to mirror movement $Y(s)$ with a feedback injection.}
+    \label{fig: closed loop}
+\end{figure}
+
+
+
+In the case of OmniSens, the two-layer suspension passively filters vibrations outside the control band and reduces force load, while the actuators and sensors actively suppress the transmission of external vibrations to the reference mass.
+
+
+
+
+
+
+% ======== Chap2 Sec1 Design of the OmniSens =========
+
+
+
+
+% ======== Theory of the GW ===========
+
+\subsubsection{Formation of Gravitational waves}
+
+According to Einstein's theory of general relativity, spacetime is described as a four-dimensional manifold with coordinates $(x^0, x^1, x^2, x^3) = (ct, x, y, z)$, where $c$ denotes the speed of light . The Lorentz-invariant spacetime interval $ds$ is given by metric $g_{\mu \nu}$:
+
+\begin{equation}\label{eq:spacetime}
+    ds^2 = g_{\mu \nu} dx^\mu dx^\nu\ \  ( \mu,\nu = 0,1,2,3)
+\end{equation}
+
+Gravity is the curvature of spacetime geometry that is generated by the mass, and the gravitational waves propagate the oscillations of the gravitational fields as ripples in the spacetime \cite{sathyaprakash_physics_2009}.
+
+In a weak gravitational field, gravity can be considered as the linear perturbation on the flat spacetime , with metric given as the following: 
+
+\begin{equation}\label{eq:linear gravity}
+    g_{\mu\nu} = \eta_{\mu\nu}+h_{\mu\nu}, \ \     \eta_{\mu\nu}=\begin{vmatrix}
+-1 & 0 & 0 & 0\\
+0  & 1 & 0 & 0\\
+0  & 0 & 1 & 0\\
+0  & 0 & 0 & 1
+\end{vmatrix}\
+\end{equation}
+
+$\eta_{\mu\nu}$ is the metric of flat spacetime and $h_{\mu\nu}$ is the perturbation with $|h_{\mu\nu}| \ll 1$. Under a coordinate transformations $x^\mu \rightarrow x'^\mu(x)\rightarrow x^\mu + \xi^\mu (x) $, with $\xi^\mu (x)$ an arbitrary infinitesimal vector field and $|\partial_{\mu} \xi_{\nu}| \lesssim |h_{\mu\nu}|$. The metric of in the new coordinate:
+
+\begin{align}
+\begin{split}
+    g'_{\mu\nu} & =  \frac{\partial x^\alpha}{\partial x'^\mu}\frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}\\
+    & \approx (\delta^\alpha_\mu \delta^\beta_\nu - \partial_\mu \xi^\alpha \delta^\beta_\nu - \partial_\nu \xi^\alpha \delta^\beta_\mu ) g_{\alpha\beta}\\
+    & = \eta_{\mu\nu} - \partial_\mu\xi_\nu - \partial_\mu\xi_\nu + h_{\mu\nu}
+\end{split}
+\end{align}
+
+where the second order of $\partial_{\mu} \xi_{\nu}$ is eliminated. Thus, in the same linearized gravitational field $g'_{\mu\nu}(x) = \eta_{\mu\nu}+ h'_{\mu\nu}(x), \ \ |h'_{\mu\nu}(x)|\ll1$, the metric perturbation transforms as:
+
+\begin{equation}\label{eq: h' transform}
+    h'_{\mu\nu}(x')=  h_{\mu\nu} - \partial_\mu\xi_\nu - \partial_\mu\xi_\nu
+\end{equation}
+
+ Einstein field equation has one possible solution to the linearized gravity in vacuum \cite{kip_roger}: 
+
+\begin{align}\label{eq: lorentz}
+    \Bar{h}_{\mu\nu} =  \Bar{h}_{\mu\nu}(t-z/c), \ \ \ \ \Bar{h}_{\mu 0} = - \Bar{h}_{\mu z} 
+\end{align}
+
+with $\Bar{h}_{\mu\nu} \equiv h_{\mu\nu} - \frac{1}{2}\eta_{\mu\nu}$ the trace-reversed metric perturbation, and $\ h \equiv \eta^{\mu\nu} h_{\mu\nu}$ the trace of the metric perturbation $h$. Combining with the restriction for metric perturbation under infinitesimal coordinate transformation \ref{eq: h' transform}:
+
+\begin{equation}\label{eq: traceless}
+    h_{\mu\nu} = \Bar{h}_{\mu\nu}
+\end{equation}
+
+It simplified $h_{\mu\nu}$ as a symmetric traceless tensor with the only two independent non-zero components. As we more concerned about the time-dependent part of gravitational waves interaction on spacial effect, it is more convenient to set $h_{00} = 0$. Then the simplest plane wave solution has the metric perturbation as follow:
+
+\begin{align} \label{eq: polarization}
+h_{\mu\nu} & = \begin{vmatrix}
+0 & 0 & 0 & 0\\
+0  &  h_{+}& h_{\times} & 0\\
+0  & h_{\times} & -h_{+} & 0\\
+0  & 0 & 0 & 1
+\end{vmatrix} = 
+\begin{vmatrix}
+0 & 0 & 0 & 0\\
+0  &  A_{+}& A_{\times} & 0\\
+0  & A_{\times} & -A_{+} & 0\\
+0  & 0 & 0 & 1
+\end{vmatrix}
+\cos[\omega(t-z/c)]
+\end{align}
+
+This coordinate system is also called transverse-traceless gauge or TT gauge. The spacetime metric in the presence a gravitational wave propagates along z-axis, is given by:
+
+\begin{equation} \label{eq: GW metric}
+    ds^2 = -c^2 dt^2 + (1+h_+)dx^2 + (1-h_+)dy^2 + 2h_\times dxdy + dz^2
+\end{equation}
+
+In the transverse-traceless (TT) gauge, the effect of a gravitational wave passing through two free particles that rest on the same wavefront can be interpreted as a periodic stretching and squeezing of the distance between them. The strain is defined as the ratio of the change in their separation to the original distance:
+
+\begin{equation}\label{eq: strain}
+    \frac{\delta L}{L} = \frac{h}{2}
+\end{equation}
+
+{\tiny Jesse's language: the effect on free-floating particles placed around the axis centre in the transverse traceless gauge is visualised in figure 1.1.}
+
+Figure is an illustration gravitational wave passing through a ring of free particles at the same wave-plane. 
+
+
+\subsubsection{Sources and Types for Gravitational Waves}\label{sec: sources}
+
+In theory, any asymmetrical accelerating object with mass can emit gravitational wave that propagates as radiation, but most of them are too weak to be detectable. 
+
+To get a rough idea of how small gravitational wave is, we can do a simple quadrupole approximation  \cite{sathyaprakash_physics_2009}. From post-Newtonian approximation scheme, the lowest order approximation for emitted radiation depends only on the density $\rho$ and the velocity fields $\dot{x}_i$ of the Newtonian system. The second moment of the mass distribution is: 
+
+
+\begin{equation}\label{eq: second moment of mass distribution}
+    Q_{ij} = \int \rho x_i x_j d^3 x
+\end{equation}
+
+Thus the amplitude of the emitted gravitational wave as the lowest order is: 
+
+\begin{equation}
+\begin{split}
+       h_{ij} & = \frac{2 G}{rc^4} \frac{d^2Q_{ij}}{dt^2}\\
+           & \sim \frac{4G}{rc^4}\int\rho \dot{x}_i \dot{x}_j dx^3\\
+           & = \frac{2G(Mv^2)_{\text{nonsph}}}{rc^4} 
+\end{split}
+\end{equation}
+
+where $(Mv^2)_{\text{nonsph}}$ is twice the non-sphereical part of the kinetic energy inside the source.  
+
+\begin{equation}\label{eq: non-sphere}
+    (Mv^2)_{\text{nonsph}} \lesssim M v^2_{\text{nonsph}} 
+\end{equation}
+
+Plus by the gravitational virial theorem:
+
+\begin{equation}\label{eq: virial theorem}
+    v^2_\text{nonsph}\leq \phi_\text{int}
+\end{equation}
+
+We can get a rough upper bound of the gravitational wave amplitude: 
+
+\begin{equation}\label{eq: estimation}
+    h \lesssim 2 \frac{\phi_\text{int}\phi_\text{exp}}{c^4}
+\end{equation}
+
+in which $GM/r = \phi_\text{exp}$ is the Newtonian potential of its source at the observer's distance. $\phi_\text{int}$ is the maximum value of the Newtonian gravitational potential inside the system. The upper limit of the source is reached when the system is entirely nonspherical.
+
+A binary system is a good example. For a simple estimation, we set a binary neutron star system with two point-like bodies with mass of $1M_\odot$ orbiting each other at the distance of 20km in Virgo cluster $r \sim 18\text{Mpc}$ then we can find $h \sim 10 ^{-21}$.
+
+
+
+Only colossal events in the universe that are strong enough for current detectors. Those events and their gravitaional waves signals can be classified by four types\cite{sathyaprakash_physics_2009}: 
+
+\begin{itemize}
+    \item[Compact Binary Inspiral] 
+    \item []
+\end{itemize}
+
+
+compact binary inspiral
+
+• neutron stars, the residue of supernova explosions, represent up to 0.1 $\%$ (by number) of the entire stellar population of any galaxy; 
+
+• stellar-mass black holes power many binary X-ray sources and tend to concentrate near the centers of globular clusters; 
+
+
+• massive black holes in the range 106 – 109 M seem almost ubiquitous in galaxies that have central bulges, and power active galaxies, quasars, and giant radio jets; 
+
+
+• Big Bang is the only naked singularity we expect to be able to see.
+
+
+
+
+\begin{itemize}
+    \item Continuous gravitational waves: continuous spinning neutron stars.
+    \item Stochastic Gravitational Waves
+    \item Burst Gravitational Waves
+\end{itemize}
+
+The cosmology and astrophyscis as we see through gravitational wave.
+
+What can we see at low frequency. 
